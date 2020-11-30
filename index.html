@@ -124,7 +124,7 @@
     mapboxgl.accessToken = 'pk.eyJ1IjoiY2hhcmxpZTIzNDMiLCJhIjoiY2p1MzBiYWRlMDF3eTRlczdoaHFxMzl0MCJ9.juqQvFAijgos8InomJ-R7A';
     var map = new mapboxgl.Map({
         container: 'map',
-        style: 'mapbox://styles/nxjdks/ckhv09g2006oc19r24gg2afkh',
+        style: 'mapbox://styles/charlie2343/cki50pla408ml1amzvk1cqa83',
         center: [-97.747875,30.268937],
         zoom: 10
     });
@@ -134,11 +134,41 @@
     map.dragRotate.disable();
  
     // disable map rotation using touch rotation gesture
+
     map.touchZoomRotate.disableRotation();
-    /*
+    
     map.on('load', function () {
-        
-        
+        map.addSource('cameras', {
+            'type': 'geojson',
+            'data':
+                'https://raw.githubusercontent.com/Charlie-Henry/Lufkin-ITS-Projects/main/cameras.geojson'
+        });
+
+         map.addLayer({
+            'id': 'camlayer',
+            'type': 'circle',
+            'source': 'cameras',
+            'layout': {'visibility':'visible'},
+            'paint': {
+                'circle-color': [
+                'match',
+                ['get','status'],
+                'Programmed associated with DMS',
+                '#C0C0C0',
+                'Proposed',
+                '#0000FF',
+                'Existing',
+                '#008000',
+                '#ccc'],
+                'circle-stroke-width' : 1
+            }
+        },
+        'waterway-label'
+        );
+
+
+
+        /*
         var legendlayers = [
               '0-39%', 
               '40-59%', 
@@ -167,12 +197,12 @@
               item.appendChild(key);
               item.appendChild(value);
               legend.appendChild(item);
-            }
+            }*/
 
         
     }
 
-    );*/
+    );
 
 </script>
 
