@@ -178,24 +178,6 @@
 
     map.touchZoomRotate.disableRotation();
 
-     map.loadImage('https://raw.githubusercontent.com/Charlie-Henry/Lufkin-ITS-Projects/main/camera%20existing.png', 
-              function(error,image){
-                if (error) throw error;
-                map.addImage('cam_exist', image);
-              });
-
-    map.loadImage('https://raw.githubusercontent.com/Charlie-Henry/Lufkin-ITS-Projects/main/camera%20proposed.png', 
-              function(error,image){
-                if (error) throw error;
-                map.addImage('cam_prop', image);
-              });
-
-    map.loadImage('https://raw.githubusercontent.com/Charlie-Henry/Lufkin-ITS-Projects/main/camera%20programmed.png', 
-              function(error,image){
-                if (error) throw error;
-                map.addImage('cam_prog', image);
-              });
-    
    map.on('load', function () {
         map.addSource('cameras', {
             'type': 'geojson',
@@ -203,24 +185,23 @@
                 'https://raw.githubusercontent.com/Charlie-Henry/Lufkin-ITS-Projects/main/cameras.geojson'
         });
 
-        map.addLayer({
+       map.addLayer({
             'id': 'CCTV Cameras',
-            'type': 'symbol',
+            'type': 'circle',
             'source': 'cameras',
-            'layout': {'visibility':'visible',
-            'icon-image':[
+            'layout': {'visibility':'visible'},
+            'paint': {
+                'circle-color': [
                 'match',
                 ['get','status'],
-                'Programmed',
-                'cam_prog',
-                'Programmed associated with DMS',
-                'cam_prog',
-                'Proposed',
-                'cam_prop',
-                'Existing',
-                'cam_exist',
-                'cam_prop']},
-            },
+                'proposed',
+                '#0000FF',
+                'programmed',
+                '#008000',
+                '#ccc'],
+                'circle-stroke-width' : 1
+            }
+        },
         'waterway-label'
         );
 
