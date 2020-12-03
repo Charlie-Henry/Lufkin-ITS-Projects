@@ -233,6 +233,84 @@
         'waterway-label'
         );
 
+        map.addSource('detector', {
+            'type': 'geojson',
+            'data':
+                'https://raw.githubusercontent.com/Charlie-Henry/Lufkin-ITS-Projects/main/detectors_v2.geojson'
+        });
+
+        map.addLayer({
+            'id': 'Detectors',
+            'type': 'circle',
+            'source': 'detector',
+            'layout': {'visibility':'visible'},
+            'paint': {
+                'circle-color': [
+                'match',
+                ['get','status'],
+                'Proposed',
+                '#0000FF',
+                'Programmed',
+                '#008000',
+                '#ccc'],
+                'circle-stroke-width' : 1
+            }
+        },
+        'waterway-label'
+        );
+
+        map.addSource('overhieght', {
+            'type': 'geojson',
+            'data':
+                'https://raw.githubusercontent.com/Charlie-Henry/Lufkin-ITS-Projects/main/overheight_warning_systems.geojson'
+        });
+
+        map.addLayer({
+            'id': 'Overheight Warning',
+            'type': 'circle',
+            'source': 'overhieght',
+            'layout': {'visibility':'visible'},
+            'paint': {
+                'circle-color': [
+                'match',
+                ['get','status'],
+                'Proposed',
+                '#0000FF',
+                'Programmed',
+                '#008000',
+                '#ccc'],
+                'circle-stroke-width' : 1
+            }
+        },
+        'waterway-label'
+        );
+
+        map.addSource('countstations', {
+            'type': 'geojson',
+            'data':
+                'https://raw.githubusercontent.com/Charlie-Henry/Lufkin-ITS-Projects/main/permanent_count_stations.geojson'
+        });
+
+        map.addLayer({
+            'id': 'Count Stations',
+            'type': 'circle',
+            'source': 'countstations',
+            'layout': {'visibility':'visible'},
+            'paint': {
+                'circle-color': [
+                'match',
+                ['get','status'],
+                'Proposed',
+                '#0000FF',
+                'Programmed',
+                '#008000',
+                '#ccc'],
+                'circle-stroke-width' : 1
+            }
+        },
+        'waterway-label'
+        );
+
 
 
 
@@ -274,7 +352,7 @@
     );
 
 
-var toggleableLayerIds = [ 'CCTV Cameras', 'DMS' ];
+var toggleableLayerIds = [ 'CCTV Cameras', 'DMS', 'Detectors', 'Overheight Warning','Count Stations'];
 
 for (var i = 0; i < toggleableLayerIds.length; i++) {
     var id = toggleableLayerIds[i];
