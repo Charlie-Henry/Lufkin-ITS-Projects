@@ -72,7 +72,7 @@
     .map-overlay {
       position: absolute;
       bottom: 0;
-      right: 0;
+      left: 0;
       background: rgba(255, 255, 255, 0.8);
       margin-right: 20px;
       font-family: Arial, sans-serif;
@@ -158,9 +158,8 @@
 <body>
 <div id='map'></div>
 <div class="map-overlay" id="legend"><p>% of 2016</p></div>
-<div class='map-overlay' id='features'><h2>Travis County Voter Turnout Map</h2>
-    <div id='pd1'><p><a href="https://twitter.com/shiftmodal">by Charlie Henry</a></p></div>
-        <div id='pd2'><p>UNOFFICIAL - Complete Early Vote</p></div></div></div>
+<div class='map-overlay' id='features'><h2>TxDOT Lufkin District ITS Projects</h2>
+     <div id='pd2'><p>Draft - Dec. 2020</p></div></div>
     
 <script>
     mapboxgl.accessToken = 'pk.eyJ1IjoiY2hhcmxpZTIzNDMiLCJhIjoiY2p1MzBiYWRlMDF3eTRlczdoaHFxMzl0MCJ9.juqQvFAijgos8InomJ-R7A';
@@ -187,7 +186,7 @@
         });
 
         map.addLayer({
-            'id': 'camlayer',
+            'id': 'CCTV Cameras',
             'type': 'circle',
             'source': 'cameras',
             'layout': {'visibility':'visible'},
@@ -215,7 +214,7 @@
         });
 
         map.addLayer({
-            'id': 'dmslayer',
+            'id': 'DMS',
             'type': 'circle',
             'source': 'dms',
             'layout': {'visibility':'visible'},
@@ -275,7 +274,7 @@
     );
 
 
-var toggleableLayerIds = [ 'camlayer', 'dmslayer' ];
+var toggleableLayerIds = [ 'CCTV Cameras', 'DMS' ];
 
 for (var i = 0; i < toggleableLayerIds.length; i++) {
     var id = toggleableLayerIds[i];
