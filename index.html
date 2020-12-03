@@ -308,7 +308,7 @@
         'waterway-label'
         );
 
-        var legendlayers = [
+         var legendlayers = [
               'Existing', 
               'Programmed', 
               'Proposed'
@@ -346,9 +346,16 @@ var toggleableLayerIds = [ 'CCTV Cameras', 'DMS', 'Detectors', 'Overheight Warni
 for (var i = 0; i < toggleableLayerIds.length; i++) {
     var id = toggleableLayerIds[i];
 
+    var visibility = map.getLayoutProperty(id, 'visibility');
+
     var link = document.createElement('a');
     link.href = '#';
-    link.className = 'active';
+    if (visibility === 'visible') {
+      link.className = 'active';
+    }
+    else {
+      link.className = '';
+    }
     link.textContent = id;
 
     link.onclick = function (e) {
