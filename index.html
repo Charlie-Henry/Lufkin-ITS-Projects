@@ -172,11 +172,11 @@
     var hoveredStateId = null;
 
     // disable map rotation using right click + drag
-    map.dragRotate.disable();
+    //map.dragRotate.disable();
  
     // disable map rotation using touch rotation gesture
 
-    map.touchZoomRotate.disableRotation();
+    //map.touchZoomRotate.disableRotation();
 
    map.on('load', function () {
         map.addSource('cameras', {
@@ -195,11 +195,11 @@
                 'match',
                 ['get','status'],
                 'Existing',
-                '#0000FF',
+                '#008000',
                 'Proposed',
-                '#008000',
+                '#8a8a8a',
                 'Programmed',
-                '#008000',
+                '#E5E500',
                 '#ccc'],
                 'circle-stroke-width' : 1
             }
@@ -222,10 +222,10 @@
                 'circle-color': [
                 'match',
                 ['get','status'],
-                'proposed',
-                '#0000FF',
                 'programmed',
-                '#008000',
+                '#E5E500',
+                'proposed',
+                '#8a8a8a',
                 '#ccc'],
                 'circle-stroke-width' : 1
             }
@@ -249,9 +249,9 @@
                 'match',
                 ['get','status'],
                 'Proposed',
-                '#0000FF',
+                '#8a8a8a',
                 'Programmed',
-                '#008000',
+                '#E5E500',
                 '#ccc'],
                 'circle-stroke-width' : 1
             }
@@ -271,14 +271,7 @@
             'source': 'overhieght',
             'layout': {'visibility':'visible'},
             'paint': {
-                'circle-color': [
-                'match',
-                ['get','status'],
-                'Proposed',
-                '#0000FF',
-                'Programmed',
-                '#008000',
-                '#ccc'],
+                'circle-color': '8a8a8a'
                 'circle-stroke-width' : 1
             }
         },
@@ -300,10 +293,12 @@
                 'circle-color': [
                 'match',
                 ['get','status'],
-                'Proposed',
-                '#0000FF',
-                'Programmed',
+                'Active',
                 '#008000',
+                'Inactive',
+                '#008000',
+                'Proposed',
+                '#8a8a8a',
                 '#ccc'],
                 'circle-stroke-width' : 1
             }
@@ -342,7 +337,7 @@
 
     );
 
-/*
+
 var toggleableLayerIds = [ 'CCTV Cameras', 'DMS', 'Detectors', 'Overheight Warning Systems','Permanent Count Stations'];
 
 for (var i = 0; i < toggleableLayerIds.length; i++) {
@@ -371,7 +366,7 @@ for (var i = 0; i < toggleableLayerIds.length; i++) {
 
     var layers = document.getElementById('menu');
     layers.appendChild(link);
-}*/
+}
 
 
 </script>
