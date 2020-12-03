@@ -157,7 +157,7 @@
 </head>
 <body>
 <div id='map'></div>
-<div class="map-overlay" id="legend"><p>% of 2016</p></div>
+<div class="map-overlay" id="legend"><p>Status</p></div>
 <div class='map-overlay' id='features'><h2>TxDOT Lufkin District ITS Projects</h2>
      <div id='pd2'><p>Draft - Dec. 2020</p></div></div>
     
@@ -177,8 +177,26 @@
     // disable map rotation using touch rotation gesture
 
     map.touchZoomRotate.disableRotation();
+
+     map.loadImage('https://raw.githubusercontent.com/Charlie-Henry/Lufkin-ITS-Projects/main/camera%20existing.png', 
+              function(error,image){
+                if (error) throw error;
+                map.addImage('cam_exist', image);
+              });
+
+    map.loadImage('https://raw.githubusercontent.com/Charlie-Henry/Lufkin-ITS-Projects/main/camera%20proposed.png', 
+              function(error,image){
+                if (error) throw error;
+                map.addImage('cam_prop', image);
+              });
+
+    map.loadImage('https://raw.githubusercontent.com/Charlie-Henry/Lufkin-ITS-Projects/main/camera%20programmed.png', 
+              function(error,image){
+                if (error) throw error;
+                map.addImage('cam_prog', image);
+              });
     
-    map.on('load', function () {
+   map.on('load', function () {
         map.addSource('cameras', {
             'type': 'geojson',
             'data':
@@ -187,23 +205,22 @@
 
         map.addLayer({
             'id': 'CCTV Cameras',
-            'type': 'circle',
+            'type': 'symbol',
             'source': 'cameras',
-            'layout': {'visibility':'visible'},
-            'paint': {
-                'circle-color': [
+            'layout': {'visibility':'visible',
+            'icon-image':[
                 'match',
                 ['get','status'],
+                'Programmed',
+                'cam_prog',
                 'Programmed associated with DMS',
-                '#C0C0C0',
+                'cam_prog',
                 'Proposed',
-                '#0000FF',
+                'cam_prop',
                 'Existing',
-                '#008000',
-                '#ccc'],
-                'circle-stroke-width' : 1
-            }
-        },
+                'cam_exist',
+                'cam_prop']},
+            },
         'waterway-label'
         );
 
@@ -266,7 +283,7 @@
         });
 
         map.addLayer({
-            'id': 'Overheight Warning',
+            'id': 'Overheight Warning Systems',
             'type': 'circle',
             'source': 'overhieght',
             'layout': {'visibility':'visible'},
@@ -292,7 +309,7 @@
         });
 
         map.addLayer({
-            'id': 'Count Stations',
+            'id': 'Permanent Count Stations',
             'type': 'circle',
             'source': 'countstations',
             'layout': {'visibility':'visible'},
@@ -311,24 +328,15 @@
         'waterway-label'
         );
 
-
-
-
-
-        /*
         var legendlayers = [
-              '0-39%', 
-              '40-59%', 
-              '60-79%', 
-              '80-99%', 
-              '100%+', 
+              'Existing', 
+              'Programmed', 
+              'Proposed'
             ];
             var colors = [
-              '#edf8e9', 
-              '#bae4b3', 
-              '#74c476', 
-              '#31a354', 
-              '#006d2c', 
+              '#008000', 
+              '#E5E500', 
+              '#8a8a8a', 
             ];
 
             for (i = 0; i < legendlayers.length; i++) {
@@ -344,7 +352,7 @@
               item.appendChild(key);
               item.appendChild(value);
               legend.appendChild(item);
-            }*/
+            }
 
         
     }
@@ -352,7 +360,7 @@
     );
 
 
-var toggleableLayerIds = [ 'CCTV Cameras', 'DMS', 'Detectors', 'Overheight Warning','Count Stations'];
+var toggleableLayerIds = [ 'CCTV Cameras', 'DMS', 'Detectors', 'Overheight Warning Systems','Permanent Count Stations'];
 
 for (var i = 0; i < toggleableLayerIds.length; i++) {
     var id = toggleableLayerIds[i];
