@@ -346,11 +346,12 @@ var toggleableLayerIds = [ 'CCTV Cameras', 'DMS', 'Detectors', 'Overheight Warni
 for (var i = 0; i < toggleableLayerIds.length; i++) {
     var id = toggleableLayerIds[i];
 
-    var visibility = id.features[0].layout.visibility;
+    var visibility = id.layout.visibility;
     console.log(visibility)
-    
+
     var link = document.createElement('a');
     link.href = '#';
+
     if (visibility === 'visible') {
       link.className = 'active';
     }
