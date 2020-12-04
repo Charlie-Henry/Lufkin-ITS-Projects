@@ -111,7 +111,7 @@
         width: 125px;
         bottom:150px;
       }
-      .legend-key {
+      .maplegend-key {
         display: inline-block; 
         width: 10px;
         height: 10px;
@@ -175,6 +175,7 @@
 </head>
 <body>
 <div class="map-overlay" id="legend"><h2>Status</h2></div>
+<div class="map-overlay" id="maplegend"><h2>Roadways</h2></div>
 <div class='map-overlay' id='features'><h2>TxDOT Lufkin District ITS Projects</h2>
      <div id='pd2'><p>Draft - Dec. 2020</p></div></div>
     
@@ -374,7 +375,7 @@
               value.innerHTML = layer;
               item.appendChild(key);
               item.appendChild(value);
-              legend.appendChild(item);
+              maplegend.appendChild(item);
             }
 
 
