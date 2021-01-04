@@ -221,12 +221,33 @@
         },
         'waterway-label'
         );
-
+        /*
         map.addSource('dms', {
             'type': 'geojson',
             'data':
                 'https://raw.githubusercontent.com/Charlie-Henry/Lufkin-ITS-Projects/main/dms.geojson'
-        });
+        });*/
+
+        $(document).ready(function () {
+          $.ajax({
+            type: "GET",
+            //YOUR TURN: Replace with csv export link
+            url: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTQwASfl-9R06F3jbZX_2nmjpo76ZwFtZ-7sQFhFrGYjIHZlpKvnC6ntsnP9PwStxaTTiLKCx9IthDb/pub?output=csv',
+            dataType: "text",
+        success: function (csvData) { makeGeoJSON(csvData); }
+      });
+
+        function makeGeoJSON(csvData) {
+          csv2geojson.csv2geojson(csvData, {
+            latfield: 'Latitude',
+            lonfield: 'Longitude',
+            delimiter: ','
+          }, function (err, data) {
+            map.addSource('dms',{
+              'type': 'geojson',
+              'data': data
+            })
+          }}
 
         map.addLayer({
             'id': 'DMS (Plus Camera)',
