@@ -246,15 +246,38 @@
             lonfield: 'Longitude',
             delimiter: ','
           }, function (err, data) {
-            map.addSource('dms',{
+            /*map.addSource('dms',{
               'type': 'geojson',
               'data': data
-            });
+            });*/
+            map.addLayer({
+            'id': 'DMS (Plus Camera)',
+            'type': 'circle',
+            'source': {
+              'type': 'geojson',
+              'data': data
+            },
+            'layout': {'visibility':'none'},
+            'paint': {
+                'circle-radius': 6,
+                'circle-color': [
+                'match',
+                ['get','status'],
+                'programmed',
+                '#E5E500',
+                'proposed',
+                '#4275f5',
+                '#ccc'],
+                'circle-stroke-width' : 1
+            }
+        },
+        'waterway-label'
+        );
           });
         };
       });
 
-
+/*
         map.addLayer({
             'id': 'DMS (Plus Camera)',
             'type': 'circle',
@@ -274,7 +297,7 @@
             }
         },
         'waterway-label'
-        );
+        );*/
 
         map.addSource('detector', {
             'type': 'geojson',
