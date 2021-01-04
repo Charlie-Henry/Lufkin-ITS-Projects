@@ -235,7 +235,7 @@
           $.ajax({
             type: "GET",
             //YOUR TURN: Replace with csv export link
-            url: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTQwASfl-9R06F3jbZX_2nmjpo76ZwFtZ-7sQFhFrGYjIHZlpKvnC6ntsnP9PwStxaTTiLKCx9IthDb/pub?output=csv',
+            url: 'https://docs.google.com/spreadsheets/d/1q0k_RXjIIp56cIz9cMYKEeL1MxyO7ZY18YoeQigiIVU/gviz/tq?tqx=out:csv&sheet=DMS',
             dataType: "text",
         success: function (csvData) { makeGeoJSON(csvData); }
       });
