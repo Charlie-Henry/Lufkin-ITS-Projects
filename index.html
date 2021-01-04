@@ -195,11 +195,64 @@
     //map.touchZoomRotate.disableRotation();
 
    map.on('load', function () {
+      $(document).ready(function () {
+          $.ajax({
+            type: "GET",
+            //YOUR TURN: Replace with csv export link
+            url: 'https://docs.google.com/spreadsheets/d/1q0k_RXjIIp56cIz9cMYKEeL1MxyO7ZY18YoeQigiIVU/gviz/tq?tqx=out:csv&sheet=Cameras',
+            dataType: "text",
+        success: function (csvData) { makeGeoJSON(csvData); }
+      });
+
+        function makeGeoJSON(csvData) {
+          csv2geojson.csv2geojson(csvData, {
+            latfield: 'Latitude',
+            lonfield: 'Longitude',
+            delimiter: ','
+          }, function (err, data) {
+            /*map.addSource('dms',{
+              'type': 'geojson',
+              'data': data
+            });*/
+            map.addLayer({
+            'id': 'CCTV Cameras',
+            'type': 'circle',
+            'source': {
+              'type': 'geojson',
+              'data': data
+            },
+            'layout': {'visibility':'visible'},
+            'paint': {
+               'circle-radius': 6,
+                'circle-color': [
+                'match',
+                ['get','status'],
+                'Existing',
+                '#008000',
+                'Proposed',
+                '#4275f5',
+                'Programmed',
+                '#E5E500',
+                '#ccc'],
+                'circle-stroke-width' : 1
+            },
+            'filter': ['!=','status','Programmed associated with DMS'] 
+        },
+        'waterway-label'
+        );
+          });
+        };
+      });
+
+
+    /*
         map.addSource('cameras', {
             'type': 'geojson',
             'data':
                 'https://raw.githubusercontent.com/Charlie-Henry/Lufkin-ITS-Projects/main/cameras.geojson'
         });
+
+
 
        map.addLayer({
             'id': 'CCTV Cameras',
@@ -223,7 +276,7 @@
             'filter': ['!=','status','Programmed associated with DMS']
         },
         'waterway-label'
-        );
+        );*/
         /*
         map.addSource('dms', {
             'type': 'geojson',
