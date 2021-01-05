@@ -194,8 +194,8 @@
 
     //map.touchZoomRotate.disableRotation();
 
-   map.on('load', function () {
-      $(document).ready(function () {
+   map.on('load', function () 
+{      $(document).ready(function () {
           $.ajax({
             type: "GET",
             //YOUR TURN: Replace with csv export link
@@ -352,6 +352,55 @@
         'waterway-label'
         );*/
 
+
+        $(document).ready(function () {
+          $.ajax({
+            type: "GET",
+            //YOUR TURN: Replace with csv export link
+            url: 'https://docs.google.com/spreadsheets/d/1q0k_RXjIIp56cIz9cMYKEeL1MxyO7ZY18YoeQigiIVU/gviz/tq?tqx=out:csv&sheet=Detectors',
+            dataType: "text",
+        success: function (csvData) { makeGeoJSON(csvData); }
+      });
+
+        function makeGeoJSON(csvData) {
+          csv2geojson.csv2geojson(csvData, {
+            latfield: 'Latitude',
+            lonfield: 'Longitude',
+            delimiter: ','
+          }, function (err, data) {
+            /*map.addSource('dms',{
+              'type': 'geojson',
+              'data': data
+            });*/
+            map.addLayer({
+            'id': 'Detectors',
+            'type': 'circle',
+            'source': {
+              'type': 'geojson',
+              'data': data
+            },
+            'layout': {'visibility':'none'},
+            'paint': {
+                'circle-radius': 6,
+                'circle-color': [
+                'match',
+                ['get','status'],
+                'Proposed',
+                '#4275f5',
+                'Programmed',
+                '#E5E500',
+                '#ccc'],
+                'circle-stroke-width' : 1
+            }
+        },
+        'waterway-label'
+        );
+          });
+        };
+      });
+
+        /*
+
         map.addSource('detector', {
             'type': 'geojson',
             'data':
@@ -377,8 +426,48 @@
             }
         },
         'waterway-label'
-        );
+        );*/
 
+
+        $(document).ready(function () {
+          $.ajax({
+            type: "GET",
+            //YOUR TURN: Replace with csv export link
+            url: 'https://docs.google.com/spreadsheets/d/1q0k_RXjIIp56cIz9cMYKEeL1MxyO7ZY18YoeQigiIVU/gviz/tq?tqx=out:csv&sheet=Overheight Warning',
+            dataType: "text",
+        success: function (csvData) { makeGeoJSON(csvData); }
+      });
+
+        function makeGeoJSON(csvData) {
+          csv2geojson.csv2geojson(csvData, {
+            latfield: 'Latitude',
+            lonfield: 'Longitude',
+            delimiter: ','
+          }, function (err, data) {
+            /*map.addSource('dms',{
+              'type': 'geojson',
+              'data': data
+            });*/
+            map.addLayer({
+            'id': 'Overheight Warning Systems',
+            'type': 'circle',
+            'source': {
+              'type': 'geojson',
+              'data': data
+            },
+            'layout': {'visibility':'none'},
+            'paint': {
+                'circle-radius': 6,
+                'circle-color': '#4275f5',
+                'circle-stroke-width' : 1
+            }
+        },
+        'waterway-label'
+        );
+          });
+        };
+      });
+        /*
         map.addSource('overhieght', {
             'type': 'geojson',
             'data':
@@ -397,7 +486,58 @@
             }
         },
         'waterway-label'
+        );*/
+
+
+        $(document).ready(function () {
+          $.ajax({
+            type: "GET",
+            //YOUR TURN: Replace with csv export link
+            url: 'https://docs.google.com/spreadsheets/d/1q0k_RXjIIp56cIz9cMYKEeL1MxyO7ZY18YoeQigiIVU/gviz/tq?tqx=out:csv&sheet=Count Stations',
+            dataType: "text",
+        success: function (csvData) { makeGeoJSON(csvData); }
+      });
+
+        function makeGeoJSON(csvData) {
+          csv2geojson.csv2geojson(csvData, {
+            latfield: 'Latitude',
+            lonfield: 'Longitude',
+            delimiter: ','
+          }, function (err, data) {
+            /*map.addSource('dms',{
+              'type': 'geojson',
+              'data': data
+            });*/
+            map.addLayer({
+            'id': 'Permanent Count Stations',
+            'type': 'circle',
+            'source': {
+              'type': 'geojson',
+              'data': data
+            },
+            'layout': {'visibility':'none'},
+            'paint': {
+                'circle-radius': 6,
+                'circle-color': [
+                'match',
+                ['get','status'],
+                'Active',
+                '#008000',
+                'Inactive',
+                '#008000',
+                'Proposed',
+                '#4275f5',
+                '#ccc'],
+                'circle-stroke-width' : 1
+            }
+        },
+        'waterway-label'
         );
+          });
+        };
+      });
+
+        /*
 
         map.addSource('countstations', {
             'type': 'geojson',
@@ -426,7 +566,7 @@
             }
         },
         'waterway-label'
-        );
+        );*/
 
          var legendlayers = [
               'Existing', 
