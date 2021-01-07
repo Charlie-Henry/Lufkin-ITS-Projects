@@ -233,6 +233,8 @@
                 '#4275f5',
                 'Programmed',
                 '#E5E500',
+                'Completed',
+                '#008000',
                 '#ccc'],
                 'circle-stroke-width' : 1
             },
@@ -316,10 +318,14 @@
                 'circle-color': [
                 'match',
                 ['get','status'],
-                'programmed',
+                'Programmed',
                 '#E5E500',
-                'proposed',
+                'Proposed',
                 '#4275f5',
+                'Existing',
+                '#008000',
+                'Completed',
+                '#008000',
                 '#ccc'],
                 'circle-stroke-width' : 1
             }
@@ -389,6 +395,10 @@
                 '#4275f5',
                 'Programmed',
                 '#E5E500',
+                'Existing',
+                '#008000',
+                'Completed',
+                '#008000',
                 '#ccc'],
                 'circle-stroke-width' : 1
             }
@@ -458,7 +468,18 @@
             'layout': {'visibility':'none'},
             'paint': {
                 'circle-radius': 6,
-                'circle-color': '#4275f5',
+                'circle-color': [
+                'match',
+                ['get','status'],
+                'Proposed',
+                '#4275f5',
+                'Programmed',
+                '#E5E500',
+                'Existing',
+                '#008000',
+                'Completed',
+                '#008000',
+                '#ccc'],
                 'circle-stroke-width' : 1
             }
         },
@@ -527,6 +548,10 @@
                 '#008000',
                 'Proposed',
                 '#4275f5',
+                'Programmed',
+                '#E5E500',
+                'Completed',
+                '#008000',
                 '#ccc'],
                 'circle-stroke-width' : 1
             }
