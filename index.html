@@ -698,6 +698,21 @@ for (var i = 0; i < toggleableLayerIds.length; i++) {
 }
 
 
+map.on('click','CCTV Cameras', function (e) {
+  var coordinates = e.features[0].geometry.coordinates.slice();
+
+  var description = `<h3>`+ `Camera: ` + e.features[0].properties.Location + `</h3>` + `<h4>` + `<b>` + `Number: ` + `</b>` + e.features[0].properties.Number + `</h4>` + `<h4>` + `<b>` + `Status: ` + `</b>` + e.features[0].properties.status + `</h4>`;
+
+  while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+                coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+        }
+              new mapboxgl.Popup()
+                .setLngLat(coordinates)
+                .setHTML(description)
+                .addTo(map);
+            });
+
+
 </script>
 
 </body>
