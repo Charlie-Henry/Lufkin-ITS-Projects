@@ -701,7 +701,7 @@ for (var i = 0; i < toggleableLayerIds.length; i++) {
 map.on('click','CCTV Cameras', function (e) {
   var coordinates = e.features[0].geometry.coordinates.slice();
 
-  var description = `<h3>`+ `Camera: ` + e.features[0].properties.Location + `</h3>` + `<h4>` + `<b>` + `Number: ` + `</b>` + e.features[0].properties.Number + `</h4>` + `<h4>` + `<b>` + `Status: ` + `</b>` + e.features[0].properties.status + `</h4>`;
+  var description = `<h3>`+ `Camera: ` + e.features[0].properties.Location + `</h3>` + `<h4>` + `<b>` + `ID: ` + `</b>` + e.features[0].properties.ID + `</h4>` + `<h4>` + `<b>` + `Status: ` + `</b>` + e.features[0].properties.status + `</h4>`;
 
   while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
                 coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
@@ -715,7 +715,7 @@ map.on('click','CCTV Cameras', function (e) {
 map.on('click','DMS (Plus Camera)', function (e) {
   var coordinates = e.features[0].geometry.coordinates.slice();
 
-  var description = `<h3>`+ `DMS: ` + e.features[0].properties.Location + `</h3>` + `<h4>` + `<b>` + `Number: ` + `</b>` + e.features[0].properties.Number + `</h4>` + `<h4>` + `<b>` + `Status: ` + `</b>` + e.features[0].properties.status + `</h4>`;
+  var description = `<h3>`+ `DMS: ` + e.features[0].properties.Location + `</h3>` + `<h4>` + `<b>` + `ID: ` + `</b>` + e.features[0].properties.ID + `</h4>` + `<h4>` + `<b>` + `Status: ` + `</b>` + e.features[0].properties.status + `</h4>`;
 
   while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
                 coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
@@ -729,7 +729,7 @@ map.on('click','DMS (Plus Camera)', function (e) {
 map.on('click','Detectors', function (e) {
   var coordinates = e.features[0].geometry.coordinates.slice();
 
-  var description = `<h3>`+ `Detector: ` + e.features[0].properties.Location + `</h3>` + `<h4>` + `<b>` + `Number: ` + `</b>` + e.features[0].properties.Number + `</h4>` + `<h4>` + `<b>` + `Status: ` + `</b>` + e.features[0].properties.status + `</h4>`;
+  var description = `<h3>`+ `Detector: ` + e.features[0].properties.Location + `</h3>` + `<h4>` + `<b>` + `ID: ` + `</b>` + e.features[0].properties.ID + `</h4>` + `<h4>` + `<b>` + `Status: ` + `</b>` + e.features[0].properties.status + `</h4>`;
 
   while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
                 coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
@@ -743,7 +743,7 @@ map.on('click','Detectors', function (e) {
 map.on('click','Overheight Warning Systems', function (e) {
   var coordinates = e.features[0].geometry.coordinates.slice();
 
-  var description = `<h3>`+ `Overheight Warning System: ` + e.features[0].properties.Location + `</h3>` + `<h4>` + `<b>` + `Number: ` + `</b>` + e.features[0].properties.Number + `</h4>` + `<h4>` + `<b>` + `Status: ` + `</b>` + e.features[0].properties.status + `</h4>`;
+  var description = `<h3>`+ `Overheight Warning System: ` + e.features[0].properties.Location + `</h3>` + `<h4>` + `<b>` + `ID: ` + `</b>` + e.features[0].properties.ID + `</h4>` + `<h4>` + `<b>` + `Status: ` + `</b>` + e.features[0].properties.status + `</h4>`;
 
   while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
                 coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
@@ -758,7 +758,7 @@ map.on('click','Overheight Warning Systems', function (e) {
 map.on('click','Permanent Count Stations', function (e) {
   var coordinates = e.features[0].geometry.coordinates.slice();
 
-  var description = `<h3>`+ `Count Station: ` + e.features[0].properties.Location + `</h3>` + `<h4>` + `<b>` + `Number: ` + `</b>` + e.features[0].properties.Number + `</h4>` + `<h4>` + `<b>` + `Status: ` + `</b>` + e.features[0].properties.status + `</h4>`;
+  var description = `<h3>`+ `Count Station: ` + e.features[0].properties.Location + `</h3>` + `<h4>` + `<b>` + `ID: ` + `</b>` + e.features[0].properties.ID + `</h4>` + `<h4>` + `<b>` + `Status: ` + `</b>` + e.features[0].properties.status + `</h4>`;
 
   while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
                 coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
